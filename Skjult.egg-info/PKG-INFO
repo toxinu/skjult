@@ -1,0 +1,34 @@
+Metadata-Version: 1.1
+Name: Skjult
+Version: 0.1
+Summary: ## Set description
+Home-page: ## Set url
+Author: Geoffrey Lehée
+Author-email: geoffrey@lehee.name
+License: UNKNOWN
+Description: Skjult
+        ==========
+        
+        Description
+        -----------
+        
+        Set description
+        
+        History
+        =======
+        
+        0.1
+        ---
+        
+        -  Initial release
+Keywords: ## Set keywords
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.0
+Classifier: Programming Language :: Python :: 3.1
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
