@@ -43,3 +43,11 @@ Mount/umount container ::
 	socketubs@socket-desktop:~$ skjult umount mypr0n
 	socketubs@socket-desktop:~$ skjult mount mypr0n
 	EncFS Password: 
+
+License
+-------
+
+License is `AGPL3`_. See `LICENSE`_.
+
+.. _AGPL3: http://www.gnu.org/licenses/agpl.html
+.. _LICENSE: https://raw.github.com/socketubs/skjult/master/LICENSE
