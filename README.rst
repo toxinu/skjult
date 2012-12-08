@@ -9,10 +9,10 @@ Skjult help you to manage yours encfs containers.
 Requirements
 ------------
 
-  You need encfs package (so linux)
-  You need to be in sudoers file
-  You need to modprobe fuse
-  You need to be in fuse group
+- encfs package (so linux)
+- be in sudoers file
+- modprobe fuse
+- be in fuse group
 
 Examples
 --------
