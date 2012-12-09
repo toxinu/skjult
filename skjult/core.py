@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # coding: utf-8
 import os
+import getpass
 
 from skjult.logger import stream_logger
 from skjult.conf import get_conf
@@ -13,7 +14,7 @@ if not which('encfs'):
 if not which('sudo'):
 	raise CoreException('Need sudo command')
 
-
+user = getpass.getuser()
 conf = get_conf()
 
 from skjult.manager import Manager

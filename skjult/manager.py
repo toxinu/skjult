@@ -1,15 +1,15 @@
 # coding: utf-8
 import os
-import getpass
 import shutil
 
 from skjult.core import conf
+from skjult.core import user
 from skjult.logger import stream_logger
 from skjult.exceptions import *
 
 class Manager(object):
 	def __init__(self):
-		self.mount_path = conf.get('paths', 'mount')
+		self.mount_path = os.path.join(conf.get('paths', 'mount'), user)
 		self.secrets_path = conf.get('paths', 'secrets')
 		self.home = conf.get('paths', 'home')
 
@@ -18,7 +18,7 @@ class Manager(object):
 
 	def _is_secret(self, name):
 		base_path = os.path.join(self.secrets_path, name)
-		if os.path.exists(os.path.join(base_path, '.encfs6.xml')):
+		if os.path.exists(os.path.join(base_path, '.encfs6.xml')) and os.path.exists(os.path.join(base_path, '.skjult')):
 			return True
 		return False
 
@@ -39,8 +39,11 @@ class Manager(object):
 		if not self._is_secret(name):
 			raise DatabaseException('Problem during new secret creation')
 
+		open(os.path.join(base_path, '.skjult'), 'w').close()
+
 	def delete_secret(self, name):
 		secret_mount_path = os.path.join(self.mount_path, name)
+
 		if not name in self.list_secrets():
 			raise DatabaseException('This secret dit not exists')
 		shutil.rmtree(os.path.join(self.secrets_path, name))
@@ -55,7 +58,7 @@ class Manager(object):
 
 		if not os.path.exists(secret_mount_path):
 			os.system('sudo mkdir %s' % secret_mount_path)
-			os.system('sudo chown %s %s' % (getpass.getuser(), secret_mount_path))
+			os.system('sudo chown %s %s' % (user, secret_mount_path))
 			os.system('encfs %s %s' % (base_path, secret_mount_path))
 		else:
 			raise DatabaseException('Secret or something else already mounted')
@@ -68,6 +71,9 @@ class Manager(object):
 			raise DatabaseException('This secret dit not exists')
 
 		if not os.path.exists(secret_mount_path):
+			raise DatabaseException('This secret is not mounted')
+
+		if not os.path.exists(os.path.join(secret_mount_path, '.skjult')):
 			raise DatabaseException('This secret is not mounted')
 
 		os.system('sudo umount %s' % secret_mount_path)

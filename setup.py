@@ -1,8 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # coding: utf-8
 
 import os
 import sys
+import re
 
 try:
 	from setuptools import setup
@@ -24,19 +25,19 @@ if sys.argv[-1] == 'publish':
 	sys.exit()
 
 setup(
-	name			= 'Skjult',
-	version			= '0.1',
-	description 	= '## Set description',
-	long_description= open('README.rst').read() + '\n\n' + open('HISTORY.rst').read(), 
-	license 		= open('LICENSE').read(),
-	author 			= 'Geoffrey Lehée',
-	author_email 	= 'geoffrey@lehee.name',
-	url 			= '## Set url',
-	keywords 		= 'linux encfs encrypted filesystem',
-	packages 		= ['skjult'],
-	scripts 		= ['scripts/skjult'],
-	install_requires= ['docopt==0.5.0'],
-	classifiers		= (
+	name='Skjult',
+	version=get_version(),
+	description='## Set description',
+	long_description=open('README.rst').read() + '\n\n' + open('HISTORY.rst').read(), 
+	license=open('LICENSE').read(),
+	author='Geoffrey Lehée',
+	author_email='geoffrey@lehee.name',
+	url='## Set url',
+	keywords='linux encfs encrypted filesystem',
+	packages=['skjult'],
+	scripts=['scripts/skjult'],
+	install_requires=['docopt==0.5.0'],
+	classifiers=(
 		'Intended Audience :: Developers',
 		'Natural Language :: English',
 		'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',
