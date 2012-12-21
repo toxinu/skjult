@@ -9,7 +9,7 @@ try:
 	from setuptools import setup
 except ImportError:
 	from distutils.core import setup
-	
+
 def get_version():
     VERSIONFILE = 'skjult/__init__.py'
     initfile_lines = open(VERSIONFILE, 'rt').readlines()
@@ -25,10 +25,10 @@ if sys.argv[-1] == 'publish':
 	sys.exit()
 
 setup(
-	name='Skjult',
+	name='skjult',
 	version=get_version(),
-	description='## Set description',
-	long_description=open('README.rst').read(), 
+	description='Skjult, encfs containers manager',
+	long_description=open('README.rst').read(),
 	license=open('LICENSE').read(),
 	author='Geoffrey Lehée',
 	author_email='geoffrey@lehee.name',
@@ -37,16 +37,16 @@ setup(
 	packages=['skjult'],
 	scripts=['scripts/skjult'],
 	install_requires=['docopt==0.5.0'],
-	# classifiers=(
-	# 		'Development Status :: 5 - Production/Stable',
-	# 		'Intended Audience :: Developers',
-	# 		'Natural Language :: English',
-	# 		'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',
-	# 		'Programming Language :: Python',
-	# 		'Programming Language :: Python :: 3',
-	# 		'Programming Language :: Python :: 3.0',
-	# 		'Programming Language :: Python :: 3.1',
-	# 		'Programming Language :: Python :: 3.2',
-	# 		'Programming Language :: Python :: 3.3',
-	# ),
+	classifiers=[
+			'Development Status :: 5 - Production/Stable',
+            'Intended Audience :: Developers',
+            'Natural Language :: English',
+            'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',
+            'Programming Language :: Python',
+            'Programming Language :: Python :: 3',
+            'Programming Language :: Python :: 3.0',
+            'Programming Language :: Python :: 3.1',
+            'Programming Language :: Python :: 3.2',
+            'Programming Language :: Python :: 3.3',
+    ],
 )
