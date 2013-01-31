@@ -9,7 +9,7 @@ Skjult help you to manage yours encfs containers.
 Requirements
 ------------
 
-- python 3
+- python 3 support
 - encfs package (so linux)
 - be in sudoers file
 - modprobe fuse
@@ -20,7 +20,7 @@ Installation
 
 :: 
 
-	pip-3.2 install skjult
+	pip install skjult
 
 Examples
 --------

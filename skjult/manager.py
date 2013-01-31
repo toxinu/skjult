@@ -18,7 +18,9 @@ class Manager(object):
 
 	def _is_secret(self, name):
 		base_path = os.path.join(self.secrets_path, name)
-		if os.path.exists(os.path.join(base_path, '.encfs6.xml')) and os.path.exists(os.path.join(base_path, '.skjult')):
+		secret_mount_path = os.path.join(self.mount_path, name)
+
+		if os.path.exists(os.path.join(base_path, '.encfs6.xml')) or os.path.exists(os.path.join(secret_mount_path, '.skjult')):
 			return True
 		return False
 
@@ -36,10 +38,13 @@ class Manager(object):
 		stream_logger.info('==> Create new secret')
 		os.makedirs(base_path)
 		self.mount_secret(name)
+		try:
+			open(os.path.join(secret_mount_path, '.skjult'), 'w').close()
+		except:
+			raise DatabaseException('Problem during new secret creation (.skjult not created)')
+
 		if not self._is_secret(name):
 			raise DatabaseException('Problem during new secret creation')
-
-		open(os.path.join(base_path, '.skjult'), 'w').close()
 
 	def delete_secret(self, name):
 		secret_mount_path = os.path.join(self.mount_path, name)
@@ -48,6 +53,9 @@ class Manager(object):
 			raise DatabaseException('This secret dit not exists')
 		shutil.rmtree(os.path.join(self.secrets_path, name))
 		os.system('sudo umount %s' % secret_mount_path)
+		if os.path.exists(secret_mount_path):
+			if not os.listdir(secret_mount_path):
+				os.system('sudo rm -r %s' % secret_mount_path)
 
 	def mount_secret(self, name):
 		base_path = os.path.join(self.secrets_path, name)

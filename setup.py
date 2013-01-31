@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # coding: utf-8
 
 import os
@@ -21,7 +21,7 @@ def get_version():
     raise RuntimeError('Unable to find version string in %s.' % (VERSIONFILE,))
 
 if sys.argv[-1] == 'publish':
-	os.system('python3 setup.py sdist upload')
+	os.system('python setup.py sdist upload')
 	sys.exit()
 
 setup(
@@ -36,13 +36,14 @@ setup(
 	keywords='linux encfs encrypted filesystem',
 	packages=['skjult'],
 	scripts=['scripts/skjult'],
-	install_requires=['docopt==0.5.0'],
+	install_requires=['docopt==0.5.0','isit'],
 	classifiers=[
 			'Development Status :: 5 - Production/Stable',
             'Intended Audience :: Developers',
             'Natural Language :: English',
             'License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)',
             'Programming Language :: Python',
+            'Programming Language :: Python :: 2',
             'Programming Language :: Python :: 3',
             'Programming Language :: Python :: 3.0',
             'Programming Language :: Python :: 3.1',

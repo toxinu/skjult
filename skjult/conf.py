@@ -1,10 +1,13 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import codecs
 import os
+import isit
 
 from skjult.logger import stream_logger
-from configparser import SafeConfigParser
+if isit.py2:
+    from ConfigParser import SafeConfigParser
+else:
+    from configparser import SafeConfigParser
 
 default_conf = """[settings]
 mount_path  = /media

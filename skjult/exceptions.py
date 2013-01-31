@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # CoreException
 class CoreException(RuntimeError):
     """ Core Error """

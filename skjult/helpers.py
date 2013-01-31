@@ -5,8 +5,9 @@ from skjult.logger import stream_logger
 
 def which(file):
     for path in os.environ["PATH"].split(":"):
-        if file in os.listdir(path):
-            return "%s/%s" % (path, file)
+        if os.path.exists(path):
+            if file in os.listdir(path):
+                return "%s/%s" % (path, file)
     return False
 
 def confirm(prompt=None, resp=False):
@@ -20,7 +21,7 @@ def confirm(prompt=None, resp=False):
             prompt = '%s [%s|%s]: ' % (prompt, 'y', 'N')
 
         while True:
-            ans = input(prompt)
+            ans = raw_input(prompt)
             if not ans:
                 return resp
             if ans == 'y' or ans == 'Y':
