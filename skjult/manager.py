@@ -67,7 +67,9 @@ class Manager(object):
 		if not os.path.exists(secret_mount_path):
 			os.system('sudo mkdir %s' % secret_mount_path)
 			os.system('sudo chown %s %s' % (user, secret_mount_path))
-			os.system('encfs %s %s' % (base_path, secret_mount_path))
+			rt = os.system('encfs %s %s' % (base_path, secret_mount_path))
+			if rt > 0:
+				os.system('sudo rm -r %s' % secret_mount_path)
 		else:
 			raise DatabaseException('Secret or something else already mounted')
 
