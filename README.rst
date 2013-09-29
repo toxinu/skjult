@@ -18,7 +18,7 @@ Requirements
 Installation
 ------------
 
-:: 
+::
 
 	pip install skjult
 
@@ -29,12 +29,12 @@ Create container ::
 
 	socketubs@socket-desktop:~$ skjult create mypr0n
 	==> Create new secret
-	[sudo] password for socketubs: 
+	[sudo] password for socketubs:
 	Creating new encrypted volume.
 	[encfs output...]
 
-	New Encfs Password: 
-	Verify Encfs Password: 
+	New Encfs Password:
+	Verify Encfs Password:
 
 	socketubs@socket-desktop:~$ ls /media/
 	mypr0n
@@ -50,7 +50,7 @@ Mount/umount container ::
 
 	socketubs@socket-desktop:~$ skjult umount mypr0n
 	socketubs@socket-desktop:~$ skjult mount mypr0n
-	EncFS Password: 
+	EncFS Password:
 
 License
 -------
@@ -58,4 +58,4 @@ License
 License is `AGPL3`_. See `LICENSE`_.
 
 .. _AGPL3: http://www.gnu.org/licenses/agpl.html
-.. _LICENSE: https://raw.github.com/socketubs/skjult/master/LICENSE
+.. _LICENSE: https://git.socketubs.org/?p=skjult.git;a=blob_plain;f=LICENSE;hb=HEAD
