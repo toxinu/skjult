@@ -30,7 +30,7 @@ setup(
 	description='Skjult, encfs containers manager',
 	long_description=open('README.rst').read(),
 	license=open('LICENSE').read(),
-	author='Geoffrey Lehée',
+	author='toxinu',
 	author_email='hello@socketubs.org',
 	url='https://git.socketubs.org/?p=skjult.git',
 	keywords='linux encfs encrypted filesystem',
